@@ -177,7 +177,7 @@ export const projects = [
     github: "https://github.com/Harutodesuuu-lang",
     demo: "#",
     featured: true,
-    status: "In Progress",
+    status: "Completed",
   },
   {
     title: "Full Stack Web Application",
