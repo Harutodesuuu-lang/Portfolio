@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222 47% 11%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 215 25% 95%;
+    --secondary-foreground: 222 47% 11%;
+    --muted: 215 25% 95%;
+    --muted-foreground: 215 16% 47%;
+    --accent: 188 94% 43%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 160 84% 39%;
+    --radius: 0.75rem;
+  }
+
+  .dark {
+    --background: 222 47% 6%;
+    --foreground: 213 31% 91%;
+    --card: 222 47% 9%;
+    --card-foreground: 213 31% 91%;
+    --popover: 222 47% 9%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 160 84% 39%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 47% 13%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 222 47% 13%;
+    --muted-foreground: 215 16% 57%;
+    --accent: 188 94% 43%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 222 47% 15%;
+    --input: 222 47% 15%;
+    --ring: 160 84% 39%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ── Keyframes ─────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+@keyframes fadeInLeft {
+  from { opacity: 0; transform: translateX(-32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes fadeInRight {
+  from { opacity: 0; transform: translateX(32px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.85); }
+  to   { opacity: 1; transform: scale(1); }
+}
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-10px); }
+}
+@keyframes floatSlow {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+@keyframes spinSlow {
+  to { transform: rotate(360deg); }
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+@keyframes pulse-scale {
+  0%, 100% { transform: scale(1);    opacity: 0.5; }
+  50%       { transform: scale(1.08); opacity: 0.8; }
+}
+@keyframes bounceDot {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+@keyframes slideDown {
+  from { opacity: 0; max-height: 0; }
+  to   { opacity: 1; max-height: 400px; }
+}
+@keyframes progressBar {
+  from { width: 0%; }
+}
+
+/* ── Animation classes ─────────────────────────────── */
+.animate-fade-in-up   { animation: fadeInUp   0.6s cubic-bezier(.21,.47,.32,.98) both; }
+.animate-fade-in-down { animation: fadeInDown 0.6s cubic-bezier(.21,.47,.32,.98) both; }
+.animate-fade-in      { animation: fadeIn     0.6s ease both; }
+.animate-fade-in-left { animation: fadeInLeft 0.6s cubic-bezier(.21,.47,.32,.98) both; }
+.animate-scale-in     { animation: scaleIn    0.7s cubic-bezier(.21,.47,.32,.98) both; }
+.animate-float        { animation: float  3s ease-in-out infinite; }
+.animate-float-slow   { animation: floatSlow 4s ease-in-out infinite; }
+.animate-spin-slow    { animation: spinSlow 20s linear infinite; }
+.animate-spin-fast    { animation: spin 1s linear infinite; }
+.animate-blink        { animation: blink 1s step-end infinite; }
+.animate-pulse-scale  { animation: pulse-scale 4s ease-in-out infinite; }
+
+/* Delay helpers */
+.delay-100  { animation-delay: 100ms; }
+.delay-150  { animation-delay: 150ms; }
+.delay-200  { animation-delay: 200ms; }
+.delay-300  { animation-delay: 300ms; }
+.delay-400  { animation-delay: 400ms; }
+.delay-500  { animation-delay: 500ms; }
+.delay-600  { animation-delay: 600ms; }
+.delay-700  { animation-delay: 700ms; }
+.delay-800  { animation-delay: 800ms; }
+.delay-900  { animation-delay: 900ms; }
+.delay-1000 { animation-delay: 1000ms; }
+.delay-1200 { animation-delay: 1200ms; }
+
+/* Scroll-triggered: hidden until .in-view is added */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.6s cubic-bezier(.21,.47,.32,.98),
+              transform 0.6s cubic-bezier(.21,.47,.32,.98);
+}
+.reveal.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.6s cubic-bezier(.21,.47,.32,.98),
+              transform 0.6s cubic-bezier(.21,.47,.32,.98);
+}
+.reveal-left.in-view {
+  opacity: 1;
+  transform: translateX(0);
+}
+.reveal-scale {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.6s cubic-bezier(.21,.47,.32,.98),
+              transform 0.6s cubic-bezier(.21,.47,.32,.98);
+}
+.reveal-scale.in-view {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ── Utilities ─────────────────────────────────────── */
+@layer utilities {
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-emerald-500 to-cyan-500;
+  }
+  .bg-grid {
+    background-image:
+      linear-gradient(rgba(16,185,129,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16,185,129,.05) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+  .dark .bg-grid {
+    background-image:
+      linear-gradient(rgba(16,185,129,.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(16,185,129,.07) 1px, transparent 1px);
+  }
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+}
+
+/* ── Scrollbar ─────────────────────────────────────── */
+::-webkit-scrollbar        { width: 6px; }
+::-webkit-scrollbar-track  { background: transparent; }
+::-webkit-scrollbar-thumb  { background: rgba(16,185,129,.4); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(16,185,129,.7); }
